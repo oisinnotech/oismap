@@ -23,6 +23,8 @@
             justify-content: center;
             align-items: center;
             z-index: 10; /* Ensure overlay is on top */
+            opacity: 1;
+            transition: opacity 1s ease-out; /* Fade out effect */
         }
         #map-container {
             position: relative;
@@ -55,11 +57,14 @@
     </div>
 
     <script>
-        // Wait for 4 seconds, then hide the loading overlay and show the map
+        // Wait for 1 second, then hide the loading overlay with fade effect and show the map
         setTimeout(() => {
-            document.getElementById('loading-overlay').style.display = 'none'; // Hide loading overlay
-            document.getElementById('map-container').style.display = 'block'; // Show map
-        }, 1000);
+            document.getElementById('loading-overlay').style.opacity = '0'; // Start fading out
+            setTimeout(() => {
+                document.getElementById('loading-overlay').style.display = 'none'; // Completely hide after fade
+                document.getElementById('map-container').style.display = 'block'; // Show map
+            }, 1000); // Wait for the fade transition to finish before hiding
+        }, 1000); // Initial 1-second wait for loading
     </script>
 </body>
 </html>
