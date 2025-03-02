@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OIS Map</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* Prevent scrolling during loading */
+        }
+        #loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000; /* Black background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10; /* Ensure overlay is on top */
+        }
+        #map-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: none; /* Initially hidden */
+        }
+        iframe {
+            border: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .school-logo {
+            width: 180px; /* Adjust size as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <div id="loading-overlay">
+        <img src="school-logo.png" alt="School Logo" class="school-logo"> <!-- Replace with your logo source -->
+    </div>
+    <div id="map-container">
+        <iframe 
+            title="OIS Map" 
+            src="https://app.mappedin.com/map/66670ee38de671000ba55c66"
+            scrolling="no">
+        </iframe>
+    </div>
+
+    <script>
+        // Wait for 4 seconds, then hide the loading overlay and show the map
+        setTimeout(() => {
+            document.getElementById('loading-overlay').style.display = 'none'; // Hide loading overlay
+            document.getElementById('map-container').style.display = 'block'; // Show map
+        }, 1000);
+    </script>
+</body>
+</html>
